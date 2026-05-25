@@ -1,6 +1,7 @@
 using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class PlayerControll : MonoBehaviour
 
     private float timer = 0f;
 
+    private int score = 0;
+
+    [SerializeField] private Text scoreText;
 
     private void Awake()
     {
@@ -101,5 +105,22 @@ public class PlayerControll : MonoBehaviour
         frameIndex = 0;
         timer = 0f;
         sr.sprite = currentSprites[frameIndex];
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Item"))
+        {
+            ItemObject item = collision.GetComponent<ItemObject>();
+
+            score += item.GetPoint();
+
+            DataManager.Instance.playerData.collectedItems.Add(item.GetItem());
+
+            scoreText.text = score.ToString();
+            Destroy(collision.gameObject);
+
+            DataManager.Instance.SaveData(DataManager.Instance.playerData);
+        }
     }
 }
