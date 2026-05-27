@@ -1,4 +1,3 @@
-using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -105,22 +104,5 @@ public class PlayerControll : MonoBehaviour
         frameIndex = 0;
         timer = 0f;
         sr.sprite = currentSprites[frameIndex];
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Item"))
-        {
-            ItemObject item = collision.GetComponent<ItemObject>();
-
-            score += item.GetPoint();
-
-            DataManager.Instance.playerData.collectedItems.Add(item.GetItem());
-
-            scoreText.text = score.ToString();
-            Destroy(collision.gameObject);
-
-            DataManager.Instance.SaveData(DataManager.Instance.playerData);
-        }
     }
 }
