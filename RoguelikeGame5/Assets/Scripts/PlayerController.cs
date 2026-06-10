@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerControll : MonoBehaviour
 {
+
     public float moveSpeed = 5f;
 
     public Sprite[] spriteUp;
@@ -41,6 +42,13 @@ public class PlayerControll : MonoBehaviour
 
         currentSprites = spriteDown;
         sr.sprite = currentSprites[0];
+
+        SaveData data = SaveManager.Instance.LoadData();
+
+        moveSpeed += data.speedLevel;
+
+        Debug.Log("현재 속도 레벨 : " + data.speedLevel);
+        Debug.Log("현재 이동속도 : " + moveSpeed);
     }
 
     public void OnMove(InputValue value)
@@ -104,5 +112,13 @@ public class PlayerControll : MonoBehaviour
         frameIndex = 0;
         timer = 0f;
         sr.sprite = currentSprites[frameIndex];
+    }
+
+    public void AddSpeed(float amount)
+    {
+        moveSpeed += amount;
+
+        Debug.Log("속도 증가!");
+        Debug.Log("현재 이동속도 : " + moveSpeed);
     }
 }
