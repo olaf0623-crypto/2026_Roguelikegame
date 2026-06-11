@@ -15,7 +15,7 @@ public class SpeedItem : MonoBehaviour
             PlayerControll player =
                 other.GetComponent<PlayerControll>();
 
-            player.AddSpeed(1f);
+            player.AddSpeed(0.1f);
 
             Destroy(gameObject);
         }

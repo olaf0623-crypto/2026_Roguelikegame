@@ -35,7 +35,7 @@ public class PlayerControll : MonoBehaviour
 
     [SerializeField] private Text scoreText;
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
