@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3895ab7d6b77a4c872ded0dc6653e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControll
-  moveSpeed: 1
+  moveSpeed: -3
   spriteUp:
   - {fileID: -4409446715219994729, guid: 036ac61f793e88a4a880ecbf48ddfc0c, type: 3}
   - {fileID: -4409446715219994729, guid: 036ac61f793e88a4a880ecbf48ddfc0c, type: 3}
