@@ -9,13 +9,14 @@ public class SpeedItem : MonoBehaviour
             SaveData data = SaveManager.Instance.LoadData();
 
             data.speedLevel++;
+            data.speedItemCount++;
 
-            //SaveManager.Instance.SaveData(data);
+            SaveManager.Instance.SaveData(data);
 
             PlayerControll player =
                 other.GetComponent<PlayerControll>();
 
-            player.AddSpeed(0.1f);
+            player.AddSpeed(1f);
 
             Destroy(gameObject);
         }
