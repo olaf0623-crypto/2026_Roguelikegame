@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SpeedItem : MonoBehaviour
 {
+    public SpeedItemData itemData;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -16,7 +18,7 @@ public class SpeedItem : MonoBehaviour
             PlayerControll player =
                 other.GetComponent<PlayerControll>();
 
-            player.AddSpeed(1f);
+            player.AddSpeed(itemData.speedIncrease);
 
             Destroy(gameObject);
         }
